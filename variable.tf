@@ -7,8 +7,11 @@ variable "aws_ins_type" {
 
 }
 variable "tags" {
-  Project = "Standard tags for learning"
-  Env         = "Learning"
-  Account     = "free"
-  Type        = "temp"
+   description = "Default tags to be used"
+   type =  map(string)
+   default = {
+       "Name" = "learning env"
+       "Environment" = "Learning"
+       "Type" = "temp"
+   }
 }
