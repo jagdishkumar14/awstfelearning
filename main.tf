@@ -1,6 +1,6 @@
 resource "aws_instance" "web" {
-  ami           = "ami-0c2b8ca1dad447f8a"
-  instance_type = "t2.micro"
+  ami           = var.aws_ami
+  instance_type = var.aws_ins_type
   availability_zone = "us-east-1a"
   #availability_zone = "us-east-1c"
 
