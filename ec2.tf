@@ -1,5 +1,5 @@
 resource "aws_instance" "web" {
-  name              = "Test VM01"
+  nname = "learning_VM"
   ami               = var.aws_ami
   instance_type     = var.aws_ins_type
   availability_zone = "us-east-1a"
