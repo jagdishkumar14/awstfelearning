@@ -3,12 +3,12 @@ module "ec2_instance" {
 
   name = "single-instance"
 
-  instance_type          = "t2.micro"
-  key_name               = "ec2_key_pair"
-  
-  monitoring             = true
-  vpc_security_group_ids = [aws_security_group.allow_ssh.id]
-  subnet_id              = aws_subnet.learning_subnet.id
+  instance_type               = "t2.micro"
+  key_name                    = "ec2_key_pair"
+  depends_on                  = [aws_internet_gateway.igw]
+  monitoring                  = true
+  vpc_security_group_ids      = [aws_security_group.allow_ssh.id]
+  subnet_id                   = aws_subnet.learning_subnet.id
   associate_public_ip_address = true
-  tags                   = var.tags
+  tags                        = var.tags
 }
