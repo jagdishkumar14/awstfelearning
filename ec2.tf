@@ -1,5 +1,5 @@
 module "ec2_instance" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
+  source = "terraform-aws-modules/ec2-instance/aws"
 
   name = "single-instance"
 
@@ -8,5 +8,5 @@ module "ec2_instance" {
   monitoring             = true
   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
   subnet_id              = aws_subnet.learning_subnet.id
-  tags = var.tags
-  }
+  tags                   = var.tags
+}
