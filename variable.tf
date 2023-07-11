@@ -37,25 +37,3 @@ variable "public_key" {
   type        = string
   default     = ""
 }
-
-################################################################################
-# Private Key
-################################################################################
-
-variable "create_private_key" {
-  description = "Determines whether a private key will be created"
-  type        = bool
-  default     = false
-}
-
-variable "private_key_algorithm" {
-  description = "Name of the algorithm to use when generating the private key. Currently-supported values are `RSA` and `ED25519`"
-  type        = string
-  default     = "RSA"
-}
-
-variable "private_key_rsa_bits" {
-  description = "When algorithm is `RSA`, the size of the generated RSA key, in bits (default: `4096`)"
-  type        = number
-  default     = 4096
-}
