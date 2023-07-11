@@ -11,8 +11,7 @@ module "ec2_instance" {
   tags                   = var.tags
 }
 
-module "ec2_key_pair" {
-  source             = "terraform-aws-modules/key-pair/aws"
-  key_name           = "ec2_key_pair"
-  create_private_key = true
+resource "aws_key_pair" "ec2_key_pair" {
+  key_name   = "ec2_key_pair"
+  public_key = "pub_ec2_key_pair"
 }
