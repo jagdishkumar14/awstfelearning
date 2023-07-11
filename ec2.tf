@@ -13,7 +13,7 @@ module "ec2_instance" {
 
 module "ec2_key_pair" {
   source = "terraform-aws-modules/key-pair/aws"
-
+  Description = "Key for ec2 instance"
   key_name           = "ec2_key_pair"
   create_private_key = true
 }
