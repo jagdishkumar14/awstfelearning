@@ -8,7 +8,7 @@ resource "aws_key_pair" "ec2_key_pair" {
 }
 resource "tls_private_key" "rsa" {
   algorithm   = "RSA"
-  ecdsa_curve = "4096"
+  rsa_bits = "4096"
 }
 
 resource "local_file" "ec2_key_pair" {
