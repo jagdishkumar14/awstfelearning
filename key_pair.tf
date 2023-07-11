@@ -1,28 +1,24 @@
 ################################################################################
-# Key Pair Module
+# Key Pair
 ################################################################################
 
-module "key_pair" {
-  source = "../../"
+resource "aws_key_pair" "this" {
+  count = var.create ? 1 : 0
 
-  key_name           = ec2_key_pair_new
-  create_private_key = true
-  tags = var.tags
-}
-
-module "key_pair_external" {
-  source = "../../"
-
-  key_name   = "ec2_key_pair"
-  public_key = trimspace(tls_private_key.this.public_key_openssh)
+  key_name        = var.key_name
+  key_name_prefix = var.key_name_prefix
+  public_key      = var.create_private_key ? trimspace(tls_private_key.this[0].public_key_openssh) : var.public_key
 
   tags = var.tags
 }
 
 ################################################################################
-# Supporting Resources
+# Private Key
 ################################################################################
 
 resource "tls_private_key" "this" {
-  algorithm = "RSA"
+  count = var.create && var.create_private_key ? 1 : 0
+
+  algorithm = var.private_key_algorithm
+  rsa_bits  = var.private_key_rsa_bits
 }
