@@ -10,8 +10,3 @@ module "ec2_instance" {
   subnet_id              = aws_subnet.learning_subnet.id
   tags                   = var.tags
 }
-
-resource "aws_key_pair" "ec2_key_pair" {
-  key_name   = "ec2_key_pair"
-  public_key = "ec2_key_pair.pub"
-}
