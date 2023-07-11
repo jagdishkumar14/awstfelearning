@@ -16,5 +16,5 @@ resource "tls_private_key" "rsa" {
 
 resource "local_file" "ec2_key_pair" {
   content  = tls_private_key.rsa.private_key_pem
-  filename = "ec2_key_pair"
+  filename = "ec2_key_pair.ppk"
 }
