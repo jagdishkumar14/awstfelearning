@@ -13,5 +13,5 @@ module "ec2_instance" {
 
 resource "aws_key_pair" "ec2_key_pair" {
   key_name   = "ec2_key_pair"
-  public_key = "pub_ec2_key_pair"
+  public_key = "ec2_key_pair.pub"
 }
