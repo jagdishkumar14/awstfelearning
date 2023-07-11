@@ -1,8 +1,12 @@
-resource "aws_instance" "web" {
-  ami                    = var.aws_ami
-  instance_type          = var.aws_ins_type
-  availability_zone      = "us-east-1a"
-  vpc_security_group_ids = [aws_security_group.allow_ssh.id]
-  tags                   = var.tags
-}
+module "ec2_instance" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
 
+  name = "single-instance"
+
+  instance_type          = "t2.micro"
+  key_name               = "user1"
+  monitoring             = true
+  vpc_security_group_ids = aws_security_group.allow_ssh
+  subnet_id              = aws_subnet.learning_subnet
+  tags = var.tags
+  }
