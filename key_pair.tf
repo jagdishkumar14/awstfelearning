@@ -2,19 +2,19 @@
 # Key Pair
 ################################################################################
 
-resource "aws_key_pair" "this" {
-  key_name        = var.key_name
-  key_name_prefix = var.key_name_prefix
-  public_key      = var.create_private_key ? trimspace(tls_private_key.this[0].public_key_openssh) : var.public_key
-
-  tags = var.tags
+resource "aws_key_pair" "ec2_key_pair" {
+  key_name = ec2_key_pair
+  public_key = tls_private_key.rsa.public_key_openssh
+}
+resource "tls_private_key" "rsa" {
+  algorithm   = "RSA"
+  ecdsa_curve = "4096"
 }
 
+resource "local_file" "ec2_key_pair" {
+  content  = tls_private_key.rsa.private_key_pem
+  filename = "ec2_key_pair"
+}
 ################################################################################
 # Private Key
 ################################################################################
-
-resource "tls_private_key" "this" {
-  algorithm = var.private_key_algorithm
-  rsa_bits  = var.private_key_rsa_bits
-}
