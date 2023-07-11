@@ -4,11 +4,11 @@ resource "aws_security_group" "allow_ssh" {
   vpc_id      = aws_vpc.learning_vpc.id
 
   ingress {
-    description = "SSH from VPC"
-    from_port   = 0
-    to_port     = 0
+    description = "SSH allow from inhoust IP"
+    from_port   = 22
+    to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["125.62.117.0/24"]
   }
 
   egress {
