@@ -4,7 +4,7 @@ resource "aws_security_group" "allow_ssh" {
   vpc_id      = aws_vpc.learning_vpc.id
 
   ingress {
-    description = "SSH allow from inhoust IP"
+    description = "SSH allow from inhouse IP"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
